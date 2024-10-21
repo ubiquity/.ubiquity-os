@@ -1,13 +1,5 @@
 plugins:
   - uses:
-    - plugin: https://ubiquity-os-telegram-bridge-feat-create-on-assignment.ubiquity.workers.dev # no path, only set that via /setwebhook and env vars
-      with:
-        botId: 7543249164
-  - uses:
-    - plugin: ubiquity-os-marketplace/ubiquity-os-kernel-telegram:compute.yml@create-on-assignment
-      with: 
-        botId: 7543249164
-  - uses:
     - plugin: https://ubiquibot-command-start-stop-development.ubiquity.workers.dev
       with:
         reviewDelayTolerance: "3 Days"
