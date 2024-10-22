@@ -358,4 +358,8 @@ plugins:
             - staging
             - production
   - uses:
-    - plugin: ubiquity-os-marketplace/text-vector-embeddings@development
+      - plugin: https://ubiquity-os-comment-vector-embeddings-development.ubiquity.workers.dev
+        with:
+          matchThreshold: 0.95
+          warningThreshold: 0.75
+          jobMatchingThreshold: 0.75
