@@ -19,6 +19,11 @@ plugins:
       with:
         registerWalletWithVerification: false
   - uses:
+    - plugin: ubiquity-os-marketplace/command-ask@development
+      with:
+        model: "openai/o1-mini"
+        openAiBaseUrl: "https://openrouter.ai/api/v1"
+  - uses:
     - plugin: https://ubiquibot-command-query-user-development.ubiquity.workers.dev
       with:
         allowPublicQuery: true
