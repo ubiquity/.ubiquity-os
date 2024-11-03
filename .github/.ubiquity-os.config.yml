@@ -378,4 +378,8 @@ plugins:
           - "MEMBER"
           - "OWNER"
   - uses:
-    - plugin: ubiquity-os-marketplace/text-vector-embeddings@development
+    - plugin: ubiquity-os-marketplace/text-vector-embeddings@main
+      with:
+        matchThreshold: 0.95
+        warningThreshold: 0.75
+        jobMatchingThreshold: 0.75
