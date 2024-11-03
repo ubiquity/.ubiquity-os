@@ -343,6 +343,23 @@ plugins:
   - uses:
     - plugin: ubiquity-os-marketplace/daemon-disqualifier@main
       with:
+        warning: "7 days"
+        eventWhitelist:
+          - 'pull_request.review_requested'
+          - 'pull_request.ready_for_review'
+          - 'pull_request_review_comment.created'
+          - 'issue_comment.created'
+          - 'push'
+        watch:
+          optOut:
+            - ubiquibot
+            - launch-party
+            - staging
+            - production
+        disqualification: "14 days"
+  - uses:
+    - plugin: ubiquity-os-marketplace/daemon-merging@main
+      with:
         approvalsRequired:
           collaborator: 1
           contributor: 2
@@ -360,18 +377,5 @@ plugins:
           - "COLLABORATOR"
           - "MEMBER"
           - "OWNER"
-  - uses:
-    - plugin: ubiquity-os-marketplace/daemon-merging@main
-      with:
-        approvalsRequired:
-          collaborator: 1
-        mergeTimeout:
-          collaborator: "3.5 days"
-        repos:
-          ignore:
-            - ubiquibot
-            - launch-party
-            - staging
-            - production
   - uses:
     - plugin: ubiquity-os-marketplace/text-vector-embeddings@development
