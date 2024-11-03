@@ -343,6 +343,8 @@ plugins:
   - uses:
     - plugin: ubiquity-os-marketplace/daemon-disqualifier@main
       with:
+        disqualification: "14 days"
+        warning: "7 days"
         watch:
           optOut:
             - ubiquibot
