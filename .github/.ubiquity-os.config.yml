@@ -343,14 +343,23 @@ plugins:
   - uses:
     - plugin: ubiquity-os-marketplace/daemon-disqualifier@main
       with:
-        disqualification: "14 days"
-        warning: "7 days"
-        watch:
-          optOut:
+        approvalsRequired:
+          collaborator: 1
+          contributor: 2
+        mergeTimeout:
+          collaborator: "3.5 days"
+          contributor: "7 days"
+        repos:
+          monitor: []
+          ignore:
             - ubiquibot
             - launch-party
             - staging
             - production
+        allowedReviewerRoles:
+          - "COLLABORATOR"
+          - "MEMBER"
+          - "OWNER"
   - uses:
     - plugin: ubiquity-os-marketplace/daemon-merging@main
       with:
