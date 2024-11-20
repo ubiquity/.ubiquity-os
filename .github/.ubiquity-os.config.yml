@@ -1,4 +1,4 @@
-plugins: 
+plugins:
   - skipBotEvents: false
     uses:
       - plugin: https://ubiquity-os-command-start-stop-development.ubiquity.workers.dev
