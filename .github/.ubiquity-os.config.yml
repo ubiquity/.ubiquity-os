@@ -61,7 +61,7 @@ plugins:
           fundExternalClosedIssue: false
   - skipBotEvents: false
     uses:
-      - plugin: ubiquity-os-marketplace/text-conversation-rewards@fix/assignee-cap
+      - plugin: ubiquity-os-marketplace/text-conversation-rewards@main
         with:
           logLevel: "debug"
           evmNetworkId: 100
