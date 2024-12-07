@@ -356,6 +356,7 @@ plugins:
     - plugin: ubiquity-os-marketplace/daemon-disqualifier@main
       with:
         warning: "7 days"
+        pullRequestRequired: true
         eventWhitelist:
           - 'pull_request.review_requested'
           - 'pull_request.ready_for_review'
