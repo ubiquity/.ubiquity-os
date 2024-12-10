@@ -403,4 +403,4 @@ plugins:
   - uses:
       - plugin: https://ubiquity-os-command-wallet-development.ubiquity.workers.dev
         with:
-          registerWalletWithVerification: true
+          registerWalletWithVerification: false
