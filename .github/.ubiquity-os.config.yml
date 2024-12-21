@@ -1,7 +1,7 @@
 plugins:
-  - skipBotEvents: false
-    uses:
+  - uses:
       - plugin: https://ubiquity-os-command-start-stop-main.ubiquity.workers.dev
+        skipBotEvents: false
         with:
           reviewDelayTolerance: 3 Days
           taskStaleTimeoutDuration: 30 Days
