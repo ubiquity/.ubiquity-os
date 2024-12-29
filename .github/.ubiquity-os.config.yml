@@ -363,7 +363,8 @@ plugins:
             githubComment:
               post: true
               debug: false
-  - uses:
+  - skipBotEvents: false
+    uses:
       - plugin: ubiquity-os-marketplace/daemon-disqualifier@main
         with:
           warning: 7 days
