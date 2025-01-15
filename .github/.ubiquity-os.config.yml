@@ -366,6 +366,7 @@ plugins:
               post: true
               debug: false
   - skipBotEvents: false
+    testUbqKey: 1234
     uses:
       - plugin: ubiquity-os-marketplace/daemon-disqualifier@main
         skipBotEvents: false
