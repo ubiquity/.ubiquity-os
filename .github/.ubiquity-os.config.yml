@@ -27,6 +27,7 @@ plugins:
               allowedRoles: ['collaborator']
             - name: "Priority: 5 (Emergency)"
               allowedRoles: ['collaborator']
+          assignedIssueScope: org
   - uses:
       - plugin: https://ubiquity-os-command-wallet-main.ubiquity.workers.dev
         with:
@@ -36,6 +37,8 @@ plugins:
         with:
           model: openai/o1-mini
           openAiBaseUrl: https://openrouter.ai/api/v1
+          similarityThreshold: 0.9
+          maxTokens: 10000
   - uses:
       - plugin: https://ubiquity-os-command-query-user-main.ubiquity.workers.dev
         with:
@@ -74,6 +77,10 @@ plugins:
           publicAccessControl:
             setLabel: true
             fundExternalClosedIssue: false
+            protectLabels:
+              - priority
+              - price
+              - time
   - skipBotEvents: false
     uses:
       - plugin: ubiquity-os-marketplace/text-conversation-rewards@main
@@ -81,6 +88,7 @@ plugins:
           logLevel: debug
           evmNetworkId: 100
           evmPrivateEncrypted: bd5AFnSCO6c5jJyPifpOfr5Zys29RE7SyXkEU3akT13RtGmYDrqGIGuvJQyH53HA5dIba7PL5bXfll0JebmwXYe5gHIXSGX80WuGMDHh0cFfeGjHhmUXe8kkZ1OT2De9qRpqejJcEzdfi-8XNAvP7cQu2Vt-7RNnPw
+          erc20RewardToken: "0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d"
           incentives:
             contentEvaluator:
               enabled: true
@@ -361,10 +369,17 @@ plugins:
                       ol:
                         score: 0
                         countWords: true
+              wordCountExponent: 0.85
             permitGeneration: {}
             githubComment:
               post: true
               debug: false
+          dataCollection:
+            maxAttempts: 10
+            delayMs: 1000
+          requirePriceLabel: true
+          limitRewards: true
+          collaboratorOnlyPaymentInvocation: true
   - skipBotEvents: false
     testUbqKey: 1234
     uses:
@@ -386,6 +401,7 @@ plugins:
               - staging
               - production
           disqualification: 14 days
+          prioritySpeed: true
   - uses:
       - plugin: ubiquity-os-marketplace/daemon-merging@main
         with:
@@ -412,3 +428,4 @@ plugins:
           matchThreshold: 0.95
           warningThreshold: 0.75
           jobMatchingThreshold: 0.75
+          alwaysRecommend: 0
