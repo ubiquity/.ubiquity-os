@@ -413,5 +413,4 @@ plugins:
           warningThreshold: 0.75
           jobMatchingThreshold: 0.75
   - uses:
-  - uses:
       - plugin: ubiquity-os-marketplace/daemon-pull-review@main
