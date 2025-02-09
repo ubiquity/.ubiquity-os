@@ -407,7 +407,7 @@ plugins:
             - MEMBER
             - OWNER
   - uses:
-      - plugin: https://ubiquity-os-comment-vector-embeddings-main.ubiquity.workers.dev
+      - plugin: ubiquity-os-marketplace/text-vector-embeddings@main
         with:
           matchThreshold: 0.95
           warningThreshold: 0.75
