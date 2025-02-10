@@ -73,7 +73,7 @@ priorityLabels: &priorityLabels
   - name: "Priority: 4 (Urgent)"
   - name: "Priority: 5 (Emergency)"
 
-# ALIASES FINISH
+# ALIASES END
 
 plugins:
   - uses:
