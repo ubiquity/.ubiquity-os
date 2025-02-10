@@ -1,79 +1,82 @@
 plugins:
   - uses:
-      - plugin: https://ubiquity-os-command-start-stop-main.ubiquity.workers.dev
-        skipBotEvents: false
-        with:
-          reviewDelayTolerance: 3 Days
-          taskStaleTimeoutDuration: 30 Days
-          startRequiresWallet: true
-          maxConcurrentTasks:
-            collaborator: 2
-            contributor: 2
-          emptyWalletText: Please set your wallet address with the /wallet command first
-            and try again.
-          rolesWithReviewAuthority:
-            - COLLABORATOR
-            - OWNER
-            - MEMBER
-            - ADMIN
-          requiredLabelsToStart:
+    - plugin: https://ubiquity-os-command-start-stop-main.ubiquity.workers.dev
+      skipBotEvents: false
+      with:
+        reviewDelayTolerance: 3 Days
+        taskStaleTimeoutDuration: 30 Days
+        startRequiresWallet: true
+        maxConcurrentTasks:
+          collaborator: 2
+          contributor: 2
+        emptyWalletText: Please set your wallet address with the /wallet command first and try again.
+        rolesWithReviewAuthority:
+          - COLLABORATOR
+          - OWNER
+          - MEMBER
+          - ADMIN
+        requiredLabelsToStart:
+          - name: "Priority: 0 (Regression)"
+            allowedRoles:
+              - collaborator
+              - contributor
+          - name: "Priority: 1 (Normal)"
+            allowedRoles:
+              - collaborator
+              - contributor
+          - name: "Priority: 2 (Medium)"
+            allowedRoles:
+              - collaborator
+              - contributor
+          - name: "Priority: 3 (High)"
+            allowedRoles:
+              - collaborator
+          - name: "Priority: 4 (Urgent)"
+            allowedRoles:
+              - collaborator
+          - name: "Priority: 5 (Emergency)"
+            allowedRoles:
+              - collaborator
+
+  - uses:
+    - plugin: https://ubiquity-os-command-wallet-main.ubiquity.workers.dev
+      with:
+        registerWalletWithVerification: false
+
+  - uses:
+    - plugin: ubiquity-os-marketplace/command-ask@main
+      with:
+        model: anthropic/claude-3.5-sonnet
+        openAiBaseUrl: https://openrouter.ai/api/v1
+
+  - uses:
+    - plugin: https://ubiquity-os-command-query-user-main.ubiquity.workers.dev
+      with:
+        allowPublicQuery: true
+
+  - uses:
+    - plugin: ubiquity-os-marketplace/daemon-pricing@main
+      with:
+        labels:
+          time:
+            - name: "Time: <15 Minutes"
+            - name: "Time: <1 Hour"
+            - name: "Time: <2 Hours"
+            - name: "Time: <4 Hours"
+            - name: "Time: <1 Day"
+            - name: "Time: <1 Week"
+          priority:
+            - name: "Priority: 0 (Regression)"
             - name: "Priority: 1 (Normal)"
-              allowedRoles: ['collaborator', 'contributor']          
             - name: "Priority: 2 (Medium)"
-              allowedRoles: ['collaborator', 'contributor']
             - name: "Priority: 3 (High)"
-              allowedRoles: ['collaborator']
             - name: "Priority: 4 (Urgent)"
-              allowedRoles: ['collaborator']
             - name: "Priority: 5 (Emergency)"
-              allowedRoles: ['collaborator']
-  - uses:
-      - plugin: https://ubiquity-os-command-wallet-main.ubiquity.workers.dev
-        with:
-          registerWalletWithVerification: false
-  - uses:
-      - plugin: ubiquity-os-marketplace/command-ask@main
-        with:
-          model: openai/o1-mini
-          openAiBaseUrl: https://openrouter.ai/api/v1
-  - uses:
-      - plugin: https://ubiquity-os-command-query-user-main.ubiquity.workers.dev
-        with:
-          allowPublicQuery: true
-  - uses:
-      - plugin: ubiquity-os-marketplace/daemon-pricing@main
-        with:
-          labels:
-            time:
-              - name: "Time: <15 Minutes"
-                collaboratorOnly: false
-              - name: "Time: <1 Hour"
-                collaboratorOnly: false
-              - name: "Time: <2 Hours"
-                collaboratorOnly: false
-              - name: "Time: <4 Hours"
-                collaboratorOnly: false
-              - name: "Time: <1 Day"
-                collaboratorOnly: false
-              - name: "Time: <1 Week"
-                collaboratorOnly: false
-            priority:
-              - name: "Priority: 0 (Regression)"
-                collaboratorOnly: false
-              - name: "Priority: 1 (Normal)"
-                collaboratorOnly: false
-              - name: "Priority: 2 (Medium)"
-                collaboratorOnly: false
-              - name: "Priority: 3 (High)"
-                collaboratorOnly: false
-              - name: "Priority: 4 (Urgent)"
-                collaboratorOnly: false
-              - name: "Priority: 5 (Emergency)"
-                collaboratorOnly: false
-          basePriceMultiplier: 2
-          publicAccessControl:
-            setLabel: true
-            fundExternalClosedIssue: false
+        basePriceMultiplier: 2
+        publicAccessControl:
+          setLabel: true
+          fundExternalClosedIssue: false
+
   - skipBotEvents: false
     uses:
       - plugin: ubiquity-os-marketplace/text-conversation-rewards@main
@@ -140,7 +143,7 @@ plugins:
                         score: 5
                         countWords: true
                       li:
-                        score: 0.5
+                        score: 0.1
                         countWords: true
                       ul:
                         score: 0
@@ -344,7 +347,7 @@ plugins:
                         score: 5
                         countWords: true
                       li:
-                        score: 0.5
+                        score: 0.1
                         countWords: true
                       ul:
                         score: 0
@@ -365,8 +368,8 @@ plugins:
             githubComment:
               post: true
               debug: false
+
   - skipBotEvents: false
-    testUbqKey: 1234
     uses:
       - plugin: ubiquity-os-marketplace/daemon-disqualifier@main
         skipBotEvents: false
@@ -379,13 +382,8 @@ plugins:
             - pull_request_review_comment.created
             - issue_comment.created
             - push
-          watch:
-            optOut:
-              - ubiquibot
-              - launch-party
-              - staging
-              - production
           disqualification: 14 days
+
   - uses:
       - plugin: ubiquity-os-marketplace/daemon-merging@main
         with:
@@ -395,22 +393,17 @@ plugins:
           mergeTimeout:
             collaborator: 3.5 days
             contributor: 7 days
-          repos:
-            monitor: []
-            ignore:
-              - ubiquibot
-              - launch-party
-              - staging
-              - production
           allowedReviewerRoles:
             - COLLABORATOR
             - MEMBER
             - OWNER
+
   - uses:
       - plugin: ubiquity-os-marketplace/text-vector-embeddings@main
         with:
           matchThreshold: 0.95
           warningThreshold: 0.75
           jobMatchingThreshold: 0.75
+
   - uses:
       - plugin: ubiquity-os-marketplace/daemon-pull-review@main
