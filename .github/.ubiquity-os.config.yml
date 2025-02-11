@@ -13,7 +13,7 @@ headingDefaults: &headingDefaults
   countWords: true
 
 boostedFalse: &boostedFalse
-  score: 1
+  score: 5
   countWords: true
 
 boostedTrue: &boostedTrue
