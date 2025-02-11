@@ -17,7 +17,7 @@ boostedFalse: &boostedFalse
   countWords: true
 
 boostedTrue: &boostedTrue
-  score: 1
+  score: 5
   countWords: true
 
 tcrHtmlConfig: &tcrHtmlConfig
