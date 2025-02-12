@@ -171,10 +171,11 @@ plugins:
                   rewards:
                     wordValue: 0
                     html: *tcrHtmlConfig
-          permitGeneration: {}
-          githubComment:
-            post: true
-            debug: false
+            permitGeneration: {}
+            reviewIncentivizer: {}
+            githubComment:
+              post: true
+              debug: false
 
   - skipBotEvents: false
     uses:
