@@ -8,24 +8,24 @@ zeroFalse: &zeroFalse
   score: 0
   countWords: false
 
-boostedFalse: &boostedFalse
-  score: 1
-  countWords: false
-
-boostedTrue: &boostedTrue
+oneTrue: &oneTrue
   score: 1
   countWords: true
 
+oneFalse: &oneFalse
+  score: 1
+  countWords: false
+
 tcrHtmlConfig: &tcrHtmlConfig
-  a: *boostedTrue
-  code: *boostedFalse
-  img: *boostedFalse
-  h1: *boostedTrue
-  h2: *boostedTrue
-  h3: *boostedTrue
-  h4: *boostedTrue
-  h5: *boostedTrue
-  h6: *boostedTrue
+  a: *oneTrue
+  code: *oneFalse
+  img: *oneFalse
+  h1: *oneTrue
+  h2: *oneTrue
+  h3: *oneTrue
+  h4: *oneTrue
+  h5: *oneTrue
+  h6: *oneTrue
   br: *zeroTrue
   p: *zeroTrue
   em: *zeroTrue
