@@ -64,6 +64,7 @@ timeLabels: &timeLabels
   - name: "Time: <4 Hours"
   - name: "Time: <1 Day"
   - name: "Time: <1 Week"
+  - name: "Time: <2 Weeks"  
 
 priorityLabels: &priorityLabels
   - name: "Priority: 0 (Regression)"
