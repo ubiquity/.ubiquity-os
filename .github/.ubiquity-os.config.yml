@@ -8,28 +8,24 @@ zeroFalse: &zeroFalse
   score: 0
   countWords: false
 
-headingDefaults: &headingDefaults
-  score: 1
-  countWords: true
-
 boostedFalse: &boostedFalse
-  score: 5
+  score: 1
   countWords: false
 
 boostedTrue: &boostedTrue
-  score: 5
+  score: 1
   countWords: true
 
 tcrHtmlConfig: &tcrHtmlConfig
   a: *boostedTrue
   code: *boostedFalse
   img: *boostedFalse
-  h1: *headingDefaults
-  h2: *headingDefaults
-  h3: *headingDefaults
-  h4: *headingDefaults
-  h5: *headingDefaults
-  h6: *headingDefaults
+  h1: *boostedTrue
+  h2: *boostedTrue
+  h3: *boostedTrue
+  h4: *boostedTrue
+  h5: *boostedTrue
+  h6: *boostedTrue
   br: *zeroTrue
   p: *zeroTrue
   em: *zeroTrue
@@ -64,7 +60,6 @@ timeLabels: &timeLabels
   - name: "Time: <4 Hours"
   - name: "Time: <1 Day"
   - name: "Time: <1 Week"
-  - name: "Time: <2 Weeks"  
 
 priorityLabels: &priorityLabels
   - name: "Priority: 0 (Regression)"
