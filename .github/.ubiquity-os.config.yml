@@ -104,7 +104,7 @@ plugins:
             time: *a8
             priority: *a9
           basePriceMultiplier: 2
-          publicAccessControl: false
+          shouldFundContributorClosedIssue: false
   - skipBotEvents: false
     uses:
       - plugin: ubiquity-os-marketplace/text-conversation-rewards@main
