@@ -106,7 +106,7 @@ plugins:
   - uses:
       - plugin: ubiquity-os-marketplace/command-ask@main
         with:
-          model: anthropic/claude-3.5-sonnet
+          model: openrouter/optimus-alpha
           openAiBaseUrl: https://openrouter.ai/api/v1
 
   - uses:
