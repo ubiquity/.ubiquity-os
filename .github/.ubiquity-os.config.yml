@@ -84,7 +84,6 @@ plugins:
               allowedRoles: *collaboratorOnly
             - name: "Priority: 5 (Emergency)"
               allowedRoles: *collaboratorOnly
-              allowedRoles: *collaboratorOnly
           taskAccessControl:
             usdPriceMax:
               contributor: -1
