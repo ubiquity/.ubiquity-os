@@ -68,8 +68,7 @@ plugins:
           maxConcurrentTasks:
             collaborator: 2
             contributor: 2
-          emptyWalletText: Please set your wallet address with the /wallet command first
-            and try again.
+          emptyWalletText: Please set your wallet address with the /wallet command first and try again.
           rolesWithReviewAuthority: *teamMembersOnly
           requiredLabelsToStart:
             - name: "Priority: 0 (Regression)"
