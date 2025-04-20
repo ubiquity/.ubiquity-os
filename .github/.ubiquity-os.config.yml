@@ -84,6 +84,12 @@ plugins:
               allowedRoles: *a7
             - name: "Priority: 5 (Emergency)"
               allowedRoles: *a7
+              allowedRoles: *collaboratorOnly
+          taskAccessControl:
+            usdPriceMax:
+              contributor: -1
+              collaborator: Infinity
+
   - uses:
       - plugin: https://ubiquity-os-command-wallet-main.ubiquity.workers.dev
         with:
@@ -91,14 +97,14 @@ plugins:
   - uses:
       - plugin: ubiquity-os-marketplace/command-ask@main
         with:
-          model: anthropic/claude-3.5-sonnet
+          model: openrouter/optimus-alpha
           openAiBaseUrl: https://openrouter.ai/api/v1
   - uses:
       - plugin: https://ubiquity-os-command-query-user-main.ubiquity.workers.dev
         with:
           allowPublicQuery: true
   - uses:
-      - plugin: https://ubiquity-os-daemon-pricing-main.ubiquity.workers.dev
+      - plugin: https://ubiquity-os-marketplace-daemon-pricing.vercel.app
         with:
           labels:
             time: *a8
@@ -117,6 +123,7 @@ plugins:
               enabled: true
               openAi:
                 endpoint: https://openrouter.ai/api/v1
+                model: openrouter/optimus-alpha
             userExtractor:
               enabled: true
               redeemTask: true
