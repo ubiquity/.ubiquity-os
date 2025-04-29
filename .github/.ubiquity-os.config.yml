@@ -102,7 +102,7 @@ plugins:
         with:
           allowPublicQuery: true
   - uses:
-      - plugin: https://ubiquity-os-marketplace-daemon-pricing.vercel.app
+      - plugin: https://ubiquity-os-daemon-pricing.azurewebsites.net
         with:
           labels:
             time: *timeLabels
