@@ -59,7 +59,7 @@ priorityLabels: &priorityLabels
   - name: "Priority: 5 (Emergency)"
 plugins:
   - uses:
-      - plugin: https://ubiquity-os-command-start-stop-main.ubiquity.workers.dev
+      - plugin: https://ubiquity-os-command-start-stop.azurewebsites.net
         skipBotEvents: false
         with:
           reviewDelayTolerance: 3 Days
