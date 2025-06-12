@@ -98,7 +98,7 @@ plugins:
           model: openrouter/optimus-alpha
           openAiBaseUrl: https://openrouter.ai/api/v1
   - uses:
-      - plugin: https://ubiquity-os-command-query-user-main.ubiquity.workers.dev
+      - plugin: https://command-query-main.deno.dev
         with:
           allowPublicQuery: true
   - uses:
