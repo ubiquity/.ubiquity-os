@@ -194,3 +194,5 @@ plugins:
           jobMatchingThreshold: 0.75
   - uses:
       - plugin: ubiquity-os-marketplace/daemon-pull-review@main
+  - uses:
+      - plugin: https://command-config-main.deno.dev
