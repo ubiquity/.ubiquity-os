@@ -155,6 +155,8 @@ plugins:
                     wordValue: 0
                     html: *tcrHtmlConfig
             permitGeneration: {}
+            payment: 
+              automaticTransferMode: false
             reviewIncentivizer: {}
             githubComment:
               post: true
