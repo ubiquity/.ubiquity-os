@@ -156,7 +156,7 @@ plugins:
                     html: *tcrHtmlConfig
             permitGeneration: {}
             payment: 
-              automaticTransferMode: true
+              automaticTransferMode: false
             reviewIncentivizer: {}
             githubComment:
               post: true
