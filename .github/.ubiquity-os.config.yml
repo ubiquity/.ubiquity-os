@@ -126,7 +126,7 @@ plugins:
                   relevance: 1
             externalContent:
               llmImageModel:
-                model: meta-llama/llama-3.2-11b-vision-instruct:free
+                model: openai/gpt-4o
               llmWebsiteModel:
                 model: google/gemini-2.5-flash
             userExtractor:
@@ -211,7 +211,7 @@ plugins:
   - uses:
       - plugin: ubiquity-os-marketplace/daemon-pull-review@main
         with:
-          openRouterAiModel: deepseek/deepseek-r1-0528:free
+          openRouterAiModel: google/gemini-2.5-flash
           openRouterBaseUrl: https://openrouter.ai/api/v1
           tokenLimit:
             context: 200000
