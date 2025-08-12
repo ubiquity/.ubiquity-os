@@ -95,7 +95,7 @@ plugins:
       - plugin: ubiquity-os-marketplace/command-ask@main
         with:
           model: deepseek/deepseek-r1-0528:free
-          openAiBaseUrl: https://openrouter.ai/api/v1
+          openRouterBaseUrl: https://openrouter.ai/api/v1
   - uses:
       - plugin: https://command-query-main.deno.dev
         with:
