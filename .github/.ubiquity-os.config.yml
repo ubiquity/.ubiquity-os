@@ -206,7 +206,7 @@ plugins:
         with:
           matchThreshold: 0.95
           warningThreshold: 0.75
-          jobMatchingThreshold: 0.75
+          jobMatchingThreshold: 0.8
           alwaysRecommend: 0          
   - uses:
       - plugin: ubiquity-os-marketplace/daemon-pull-review@main
