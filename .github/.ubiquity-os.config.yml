@@ -209,14 +209,6 @@ plugins:
           jobMatchingThreshold: 0.8
           alwaysRecommend: 0          
   - uses:
-      - plugin: ubiquity-os-marketplace/daemon-pull-review@main
-        with:
-          openRouterAiModel: google/gemini-2.5-flash
-          openRouterBaseUrl: https://openrouter.ai/api/v1
-          tokenLimit:
-            context: 200000
-            completion: 4096
-  - uses:
       - plugin: https://command-config-main.deno.dev
   - uses:
       - plugin: ubiquity-os-marketplace/personal-agent-bridge@main
