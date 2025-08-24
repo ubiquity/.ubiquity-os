@@ -132,7 +132,7 @@ plugins:
             userExtractor:
               redeemTask: true
             dataPurge:
-              enabled: true
+              skipCommentsWhileAssigned: "exact"
             formattingEvaluator:
               multipliers:
                 - role:
