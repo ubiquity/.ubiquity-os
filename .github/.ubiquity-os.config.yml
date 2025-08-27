@@ -45,18 +45,30 @@ teamMembersOnly: &teamMembersOnly
   - ADMIN
 timeLabels: &timeLabels
   - name: "Time: <15 Minutes"
+    collaboratorOnly: false
   - name: "Time: <1 Hour"
+    collaboratorOnly: false
   - name: "Time: <2 Hours"
+    collaboratorOnly: false
   - name: "Time: <4 Hours"
+    collaboratorOnly: false
   - name: "Time: <1 Day"
+    collaboratorOnly: false
   - name: "Time: <1 Week"
+    collaboratorOnly: false
 priorityLabels: &priorityLabels
   - name: "Priority: 0 (Regression)"
+    collaboratorOnly: false
   - name: "Priority: 1 (Normal)"
+    collaboratorOnly: false
   - name: "Priority: 2 (Medium)"
+    collaboratorOnly: false
   - name: "Priority: 3 (High)"
+    collaboratorOnly: false
   - name: "Priority: 4 (Urgent)"
+    collaboratorOnly: false
   - name: "Priority: 5 (Emergency)"
+    collaboratorOnly: false
 plugins:
   - uses:
       - plugin: https://command-start-stop-main.deno.dev
@@ -64,6 +76,7 @@ plugins:
           reviewDelayTolerance: 3 Days
           taskStaleTimeoutDuration: 30 Days
           startRequiresWallet: true
+          assignedIssueScope: "org"
           maxConcurrentTasks:
             collaborator: 2
             contributor: 2
@@ -96,10 +109,14 @@ plugins:
         with:
           model: deepseek/deepseek-r1-0528:free
           openRouterBaseUrl: https://openrouter.ai/api/v1
+          similarityThreshold: 0.9
+          maxDepth: 3
   - uses:
       - plugin: https://command-query-main.deno.dev
         with:
           allowPublicQuery: true
+  - uses:
+      - plugin: https://command-config-main.deno.dev
   - uses:
       - plugin: https://daemon-pricing-main.deno.dev
         with:
@@ -108,13 +125,19 @@ plugins:
             priority: *priorityLabels
           basePriceMultiplier: 3
           shouldFundContributorClosedIssue: false
-  - uses:
+          globalConfigUpdate:
+            excludeRepos: []
+  - skipBotEvents: false
+    uses:
       - plugin: ubiquity-os-marketplace/text-conversation-rewards@main
         with:
           rewards:
             evmNetworkId: 100
             evmPrivateEncrypted: bd5AFnSCO6c5jJyPifpOfr5Zys29RE7SyXkEU3akT13RtGmYDrqGIGuvJQyH53HA5dIba7PL5bXfll0JebmwXYe5gHIXSGX80WuGMDHh0cFfeGjHhmUXe8kkZ1OT2De9qRpqejJcEzdfi-8XNAvP7cQu2Vt-7RNnPw
           incentives:
+            requirePriceLabel: true
+            limitRewards: true
+            collaboratorOnlyPaymentInvocation: true
             contentEvaluator:
               enabled: true
               openAi:
@@ -168,6 +191,9 @@ plugins:
             githubComment:
               post: true
               debug: false
+          dataCollection:
+            maxAttempts: 10
+            delayMs: 1000
   - skipBotEvents: false
     uses:
       - plugin: ubiquity-os-marketplace/daemon-disqualifier@main
@@ -181,6 +207,13 @@ plugins:
             - issue_comment.created
             - push
           disqualification: 14 days
+          prioritySpeed: true
+          watch:
+            optOut:
+              - ubiquibot
+              - launch-party
+              - staging
+              - production
   - uses:
       - plugin: ubiquity-os-marketplace/daemon-merging@main
         with:
@@ -208,7 +241,5 @@ plugins:
           warningThreshold: 0.75
           jobMatchingThreshold: 0.8
           alwaysRecommend: 0          
-  - uses:
-      - plugin: https://command-config-main.deno.dev
   - uses:
       - plugin: ubiquity-os-marketplace/personal-agent-bridge@main
