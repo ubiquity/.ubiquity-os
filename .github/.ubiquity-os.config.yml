@@ -117,6 +117,8 @@ plugins:
           allowPublicQuery: true
   - uses:
       - plugin: https://command-config-main.deno.dev
+        with:
+          model: google/gemini-2.5-flash
   - uses:
       - plugin: https://daemon-pricing-main.deno.dev
         with:
