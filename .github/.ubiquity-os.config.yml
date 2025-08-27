@@ -71,6 +71,21 @@ priorityLabels: &priorityLabels
     collaboratorOnly: false
 plugins:
   - uses:
+      - plugin: ubiquity-os-marketplace/command-ask@main
+        with:
+          model: google/gemini-2.5-flash
+          openRouterBaseUrl: https://openrouter.ai/api/v1
+          similarityThreshold: 0.9
+          maxDepth: 3
+  - uses:
+      - plugin: https://command-config-main.deno.dev
+        with:
+          model: google/gemini-2.5-flash
+  - uses:
+      - plugin: https://command-query-main.deno.dev
+        with:
+          allowPublicQuery: true
+  - uses:
       - plugin: https://command-start-stop-main.deno.dev
         with:
           reviewDelayTolerance: 3 Days
@@ -104,21 +119,46 @@ plugins:
       - plugin: https://command-wallet-main.deno.dev
         with:
           registerWalletWithVerification: false
-  - uses:
-      - plugin: ubiquity-os-marketplace/command-ask@main
+  - skipBotEvents: false
+    uses:
+      - plugin: ubiquity-os-marketplace/daemon-disqualifier@main
         with:
-          model: google/gemini-2.5-flash
-          openRouterBaseUrl: https://openrouter.ai/api/v1
-          similarityThreshold: 0.9
-          maxDepth: 3
+          warning: 7 days
+          pullRequestRequired: true
+          eventWhitelist:
+            - pull_request.review_requested
+            - pull_request.ready_for_review
+            - pull_request_review_comment.created
+            - issue_comment.created
+            - push
+          disqualification: 14 days
+          prioritySpeed: true
+          watch:
+            optOut:
+              - ubiquibot
+              - launch-party
+              - staging
+              - production
   - uses:
-      - plugin: https://command-query-main.deno.dev
+      - plugin: ubiquity-os-marketplace/daemon-merging@main
         with:
-          allowPublicQuery: true
-  - uses:
-      - plugin: https://command-config-main.deno.dev
-        with:
-          model: google/gemini-2.5-flash
+          approvalsRequired:
+            collaborator: 1
+            contributor: 2
+          mergeTimeout:
+            collaborator: 3.5 days
+            contributor: 7 days
+          repos:
+            monitor: []
+            ignore:
+              - ubiquibot
+              - launch-party
+              - staging
+              - production
+          allowedReviewerRoles:
+            - COLLABORATOR
+            - MEMBER
+            - OWNER
   - uses:
       - plugin: https://daemon-pricing-main.deno.dev
         with:
@@ -129,6 +169,8 @@ plugins:
           shouldFundContributorClosedIssue: false
           globalConfigUpdate:
             excludeRepos: []
+  - uses:
+      - plugin: ubiquity-os-marketplace/personal-agent-bridge@main
   - skipBotEvents: false
     uses:
       - plugin: ubiquity-os-marketplace/text-conversation-rewards@main
@@ -196,52 +238,10 @@ plugins:
           dataCollection:
             maxAttempts: 10
             delayMs: 1000
-  - skipBotEvents: false
-    uses:
-      - plugin: ubiquity-os-marketplace/daemon-disqualifier@main
-        with:
-          warning: 7 days
-          pullRequestRequired: true
-          eventWhitelist:
-            - pull_request.review_requested
-            - pull_request.ready_for_review
-            - pull_request_review_comment.created
-            - issue_comment.created
-            - push
-          disqualification: 14 days
-          prioritySpeed: true
-          watch:
-            optOut:
-              - ubiquibot
-              - launch-party
-              - staging
-              - production
-  - uses:
-      - plugin: ubiquity-os-marketplace/daemon-merging@main
-        with:
-          approvalsRequired:
-            collaborator: 1
-            contributor: 2
-          mergeTimeout:
-            collaborator: 3.5 days
-            contributor: 7 days
-          repos:
-            monitor: []
-            ignore:
-              - ubiquibot
-              - launch-party
-              - staging
-              - production
-          allowedReviewerRoles:
-            - COLLABORATOR
-            - MEMBER
-            - OWNER
   - uses:
       - plugin: ubiquity-os-marketplace/text-vector-embeddings@main
         with:
           matchThreshold: 0.95
           warningThreshold: 0.75
           jobMatchingThreshold: 0.8
-          alwaysRecommend: 0          
-  - uses:
-      - plugin: ubiquity-os-marketplace/personal-agent-bridge@main
+          alwaysRecommend: 0
