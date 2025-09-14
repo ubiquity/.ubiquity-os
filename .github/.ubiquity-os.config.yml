@@ -242,7 +242,7 @@ plugins:
                     html: *tcrHtmlConfig
             permitGeneration: {}
             simplificationIncentivizer: {}
-            payment: 
+            payment:
               automaticTransferMode: false
             reviewIncentivizer: {}
             githubComment:
