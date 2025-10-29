@@ -249,3 +249,10 @@ plugins:
           warningThreshold: 0.75
           jobMatchingThreshold: 0.8
           alwaysRecommend: 0
+  - uses:
+      - plugin: ubiquity-os-marketplace/daemon-spec-rewriter@main
+        with:
+          model: google/gemini-2.5-flash
+          openRouterBaseUrl: https://openrouter.ai/api/v1
+          maxDepth: 3
+          similarityThreshold: 0.9
