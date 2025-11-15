@@ -112,7 +112,7 @@ plugins:
               allowedRoles: *allRoles
           taskAccessControl:
             usdPriceMax:
-              contributor: -1
+              contributor: 1000
               collaborator: Infinity
 
   - uses:
