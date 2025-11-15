@@ -105,11 +105,11 @@ plugins:
             - name: "Priority: 2 (Medium)"
               allowedRoles: *allRoles
             - name: "Priority: 3 (High)"
-              allowedRoles: *collaboratorOnly
+              allowedRoles: *allRoles
             - name: "Priority: 4 (Urgent)"
-              allowedRoles: *collaboratorOnly
+              allowedRoles: *allRoles
             - name: "Priority: 5 (Emergency)"
-              allowedRoles: *collaboratorOnly
+              allowedRoles: *allRoles
           taskAccessControl:
             usdPriceMax:
               contributor: -1
