@@ -245,8 +245,10 @@ plugins:
   - uses:
       - plugin: ubiquity-os-marketplace/text-vector-embeddings@main
         with:
+          dedupeMatchThreshold: 0.95
+          dedupeWarningThreshold: 0.8
           matchThreshold: 0.95
-          warningThreshold: 0.75
+          warningThreshold: 0.8
           jobMatchingThreshold: 0.8
           alwaysRecommend: 0
   - uses:
