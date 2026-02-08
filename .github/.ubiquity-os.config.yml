@@ -95,17 +95,17 @@ plugins:
       rolesWithReviewAuthority: *teamMembersOnly
       requiredLabelsToStart:
         - name: "Priority: 0 (Regression)"
-          allowedRoles: *allRoles
+          allowedRoles: *collaboratorOnly
         - name: "Priority: 1 (Normal)"
-          allowedRoles: *allRoles
+          allowedRoles: *collaboratorOnly
         - name: "Priority: 2 (Medium)"
-          allowedRoles: *allRoles
+          allowedRoles: *collaboratorOnly
         - name: "Priority: 3 (High)"
-          allowedRoles: *allRoles
+          allowedRoles: *collaboratorOnly
         - name: "Priority: 4 (Urgent)"
-          allowedRoles: *allRoles
+          allowedRoles: *collaboratorOnly
         - name: "Priority: 5 (Emergency)"
-          allowedRoles: *allRoles
+          allowedRoles: *collaboratorOnly
       taskAccessControl:
         usdPriceMax:
           contributor: 1000
