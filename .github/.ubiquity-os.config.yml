@@ -243,3 +243,12 @@ plugins:
     with:
       openRouterAiModel: google/gemini-2.5-flash
       openRouterBaseUrl: https://openrouter.ai/api/v1
+
+  ubiquity-os-marketplace/daemon-xp@main:
+
+  ubiquity-os-marketplace/daemon-planner@main:
+    with:
+      dryRun: true
+      assignedTaskLimit: 2
+
+  ubiquity-os-marketplace/daemon-task-matcher@main:
