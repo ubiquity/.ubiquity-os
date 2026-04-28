@@ -171,18 +171,11 @@ plugins:
         collaboratorOnlyPaymentInvocation: true
         contentEvaluator:
           enabled: true
-          openAi:
-            endpoint: https://openrouter.ai/api/v1
-            model: google/gemini-2.5-flash
           multipliers:
             - role:
                 - ISSUE_SPECIFICATION
               relevance: 1
-        externalContent:
-          llmImageModel:
-            model: openai/gpt-5
-          llmWebsiteModel:
-            model: google/gemini-2.5-flash
+        externalContent: {}
         userExtractor:
           redeemTask: true
         dataPurge:
