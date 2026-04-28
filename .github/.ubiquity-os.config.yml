@@ -160,7 +160,7 @@ plugins:
       globalConfigUpdate:
         excludeRepos: []
   ubiquity-os-marketplace/personal-agent-bridge@main:
-  ubiquity-os-marketplace/text-conversation-rewards@codex/support-pr-collaboration-checks:
+  ubiquity-os-marketplace/text-conversation-rewards@development:
     with:
       rewards:
         evmNetworkId: 100
